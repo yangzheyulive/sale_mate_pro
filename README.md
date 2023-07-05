@@ -12,8 +12,8 @@
 - 精准回答个性化问题
 - 更具人文关怀的回复
 
-### 项目地址
-http://jiayu.39nat.com
+### 项目演示地址
+http://salemate.pinbar.vip/
 
 ## [视频演示](http://xxww.pinbar.vip:9091/20230705.mp4)
 <p align="center">
