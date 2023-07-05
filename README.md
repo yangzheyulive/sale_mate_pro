@@ -13,7 +13,7 @@
 - 更具人文关怀的回复
 
 ### 项目地址
-http://salemate.binpar.vip
+http://jiayu.39nat.com
 
 ## [视频演示](http://xxww.pinbar.vip:9091/20230705.mp4)
 <p align="center">
@@ -21,3 +21,44 @@ http://salemate.binpar.vip
    <img alt="spring-boot-plus videos" src="http://xxww.pinbar.vip:9091/20230705.png">
   </a>
 </p>
+
+## PPT说明
+![1](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/dd8c5a5c-0f51-4dd9-b5d7-88cb0308d162)
+![2](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/d9cc6b7c-ed61-47cc-abc3-6d6934ee151c)
+![3](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/3885bb41-7fb9-43de-8c5d-bfb4a5394e14)
+![4](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/bcef5f08-3ff3-4e28-b53e-42a90175c04b)
+![5](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/87a778f0-f960-4c06-b833-271fb1386871)
+![6](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/d493b6aa-7ef8-42ed-9b47-60420ebbef05)
+![7](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/eb8faf20-eabe-4a93-8627-40df895ad871)
+![8](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/021b75d2-b5d8-4c9f-88f9-7cfb31492dd4)
+![9](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/6c10fcd0-1ce5-483a-886d-af2b1af1ae9a)
+![10](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/9242fa2d-a898-43f1-ac63-b718bd9cab34)
+![11](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/de650f9f-8dc4-490e-bdc1-aa644ce2753c)
+![12](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/14cb3d8f-ca19-4e88-8459-4d4aec420688)
+![13](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/65659413-65d7-485f-802e-8c866f77e5f2)
+![14](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/83ca2d18-ba3f-4bbb-94a0-c19335acfae5)
+![15](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/bf0cb199-7aa0-49aa-97ce-4f1ef2ff9ed0)
+![16](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/78136d4b-6687-48e3-9c5c-b9688c4d2fcf)
+![17](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/e704ae3f-cd0b-4c03-af10-48a97b11e24a)
+![18](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/6770fc01-88a3-438d-8056-31dba7cc5414)
+![19](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/0354a849-bd7c-4263-83f0-9937e27eafab)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
