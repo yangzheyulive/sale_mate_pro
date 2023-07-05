@@ -40,7 +40,7 @@ export default {
           {
             content:'介绍Salemat',
             func:()=>{
-              this.$refs.chat.sendSystemMsg("Salemat是一款专注于帮助企业提升销售\n" +
+              this.$refs.chat.sendSystemMsg("Salemate是一款专注于帮助企业提升销售\n" +
                   "业绩的智能销售管理软件，通过销售管理、\n" +
                   "客户管理、销售数据分析、销售业绩分析、\n" +
                   "销售业绩预测等功能，帮助企业提升销售\n" +
@@ -48,7 +48,7 @@ export default {
             }
           },
           {
-            content: '生运营策策略',
+            content: '生运营策略',
             func:()=>{
               this.$refs.chat.sendUserMsg("生运营策略");
               setTimeout(()=>{

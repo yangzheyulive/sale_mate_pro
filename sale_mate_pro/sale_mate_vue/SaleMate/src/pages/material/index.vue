@@ -11,22 +11,37 @@
         <el-main>
           <div class="option-list">
             <!--          未购买-->
-            <div ref="list1" class="material">
+            <div ref="list1" v-infinite-scroll="load1" class="material">
               <div class="title">未购买</div>
+              <div
+                  v-if="!form1Option.visible"
+                  @click="openWindow(form1,form1Option)"
+                  class="material-add-but"
+              >
+                <span>新增素材</span>
+                <span>AI自动帮您发</span>
+              </div>
               <ul  v-if="!form1Option.visible">
-                <li class="material-item" v-for="(item,index) in list1">
+                <li class="material-item" @click="updateHandle(item,form1,form1Option)" v-for="(item,index) in list1">
                   <span class="material-item-title">
                     {{item.content}}
                   </span>
                   <span class="material-item-info">
-                    <div>朋友圈 | 覆盖45人</div>
-                    <div class="group-icon">
+                    <div>朋友圈 | 覆盖{{item.fgrs}}人
                       <img
                           src="~@/assets/images/group.png"
                           width="16"
-                          height="13"
-                      />
+                          height="13"/>
                     </div>
+                    <div class="group-icon">
+
+
+                    </div>
+                      <div class="count-send-num">
+                        <span>唤醒率:{{item.hxl}}%</span>
+                        <span>成交率:{{item.cjl}}%</span>
+                      </div>
+
                   </span>
                 </li>
               </ul>
@@ -78,7 +93,7 @@
                         />
                         <a>AI生成</a>
                       </span>
-                      <div style="height: 10px"></div>
+                      <div style="height: 3px"></div>
 
                         <span>
 
@@ -101,15 +116,7 @@
                     </div>
                   </div>
                 </div>
-                <div @click="saveForm1" class="material-save-but">保存</div>
-              </div>
-              <div
-                  v-if="!form1Option.visible"
-                  @click="openWindow(form1,form1Option)"
-                  class="material-add-but"
-              >
-                <span>新增素材</span>
-                <span>AI自动帮您发</span>
+                <div  @click="submit(form1)" class="material-save-but">保存</div>
               </div>
               <div
                   @click="openWindow(form1,form1Option)"
@@ -121,22 +128,37 @@
             </div>
             <!--          <div v-if="!repeatVisible" style="margin:0 15px"></div>-->
             <!--          促复购-->
-            <div ref="list2" class="repeat">
+            <div ref="list2" v-infinite-scroll="load2"  infinite-scroll-distance="10" class="repeat">
               <div class="title">促复购</div>
+              <div
+                  v-if="!form2Option.visible"
+                  @click="openWindow(form2,form2Option)"
+                  class="material-add-but"
+              >
+                <span>新增素材</span>
+                <span>AI自动帮您发</span>
+              </div>
               <ul v-if="!form2Option.visible" >
-                <li class="material-item" v-for="(item,index) in list2">
+                <li class="material-item" @click="updateHandle(item,form2,form2Option)" v-for="(item,index) in list2">
                   <span class="material-item-title">
                     {{item.content}}
                   </span>
                   <span class="material-item-info">
-                    <div>朋友圈 | 覆盖45人</div>
-                    <div class="group-icon">
+                    <div>朋友圈 | 覆盖{{item.fgrs}}人
                       <img
                           src="~@/assets/images/group.png"
                           width="16"
-                          height="13"
-                      />
+                          height="13"/>
                     </div>
+                    <div class="group-icon">
+
+
+                    </div>
+                      <div class="count-send-num">
+                        <span>唤醒率:{{item.hxl}}%</span>
+                        <span>成交率:{{item.cjl}}%</span>
+                      </div>
+
                   </span>
                 </li>
               </ul>
@@ -188,7 +210,7 @@
                         />
                         <a>AI生成</a>
                       </span>
-                      <div style="height: 10px"></div>
+                      <div style="height: 3px"></div>
 
                       <span>
 
@@ -211,16 +233,9 @@
                     </div>
                   </div>
                 </div>
-                <div @click="saveForm1" class="material-save-but">保存</div>
+                <div @click="submit(form2)" class="material-save-but">保存</div>
               </div>
-              <div
-                  v-if="!form2Option.visible"
-                  @click="openWindow(form2,form2Option)"
-                  class="material-add-but"
-              >
-                <span>新增素材</span>
-                <span>AI自动帮您发</span>
-              </div>
+
               <div
                   @click="openWindow(form2,form2Option)"
                   v-if="form2Option.visible"
@@ -230,22 +245,37 @@
               </div>
             </div>
             <!--          转介绍-->
-            <div ref="list3" class="introduce">
+            <div ref="list3" v-infinite-scroll="load3"  infinite-scroll-distance="10" class="introduce">
               <div class="title">转介绍</div>
+              <div
+                  v-if="!form3Option.visible"
+                  @click="openWindow(form3,form3Option)"
+                  class="material-add-but"
+              >
+                <span>新增素材</span>
+                <span>AI自动帮您发</span>
+              </div>
               <ul v-if="!form3Option.visible" >
-                <li class="material-item" v-for="(item,index) in list3">
+                <li class="material-item" @click="updateHandle(item,form3,form3Option)" v-for="(item,index) in list3">
                   <span class="material-item-title">
                     {{item.content}}
                   </span>
                   <span class="material-item-info">
-                    <div>朋友圈 | 覆盖45人</div>
-                    <div class="group-icon">
+                    <div>朋友圈 | 覆盖{{item.fgrs}}人
                       <img
                           src="~@/assets/images/group.png"
                           width="16"
-                          height="13"
-                      />
+                          height="13"/>
                     </div>
+                    <div class="group-icon">
+
+
+                    </div>
+                      <div class="count-send-num">
+                        <span>唤醒率:{{item.hxl}}%</span>
+                        <span>成交率:{{item.cjl}}%</span>
+                      </div>
+
                   </span>
                 </li>
               </ul>
@@ -297,7 +327,7 @@
                         />
                         <a>AI生成</a>
                       </span>
-                      <div style="height: 10px"></div>
+                      <div style="height: 3px"></div>
 
                       <span>
 
@@ -320,16 +350,9 @@
                     </div>
                   </div>
                 </div>
-                <div @click="saveForm1" class="material-save-but">保存</div>
+                <div @click="submit(form3)"class="material-save-but">保存</div>
               </div>
-              <div
-                  v-if="!form3Option.visible"
-                  @click="openWindow(form3,form3Option)"
-                  class="material-add-but"
-              >
-                <span>新增素材</span>
-                <span>AI自动帮您发</span>
-              </div>
+
               <div
                   @click="openWindow(form3,form3Option)"
                   v-if="form3Option.visible"
@@ -344,7 +367,7 @@
     </Transition>
     <Transition name="left-to-right">
       <el-aside v-show="loading">
-        <chat-common ref="chat"></chat-common>
+        <chat-common :callback="bmy" ref="chat"></chat-common>
       </el-aside>
     </Transition>
   </el-container>
@@ -355,7 +378,7 @@ import ChatCommon from "../../components/ChatCommon";
 import AppConfig from "../../config";
 import Vue from "vue";
 import SmImage from "../../components/SmImage.vue";
-import {aiImage, getList, randomImage} from "../../api/material";
+import {aiImage, getList, randomImage, save} from "../../api/material";
 
 export default {
   name: "material",
@@ -396,56 +419,150 @@ export default {
         uploadAiLoading: false,
       },
       form1: {
-        id:"",
+        groupId:"",
         content: "",
         imagesIds: [],
         displayedContent: "",
         labelType: 0,
+        sendType:0,
       },
       form2: {
-        id:"",
+        groupId:"",
         content: "",
         displayedContent: "",
         imagesIds: [],
         labelType: 1,
+        sendType:0,
       },
       form3: {
-        id:"",
+        groupId:"",
         content: "",
         displayedContent: "",
         imagesIds: [],
-        labelType: 3,
+        labelType: 2,
+        sendType:0,
       },
       list1:[],
       list2:[],
       list3:[],
-      pageNum1:0,
-      pageNum2:0,
-      pageNum3:0,
-    };
+      params1:{
+        pageNum:0,
+        pageSize:10,
+        labelType:0,
+        count:1,
+        disLoad:true,
+      },
+      params2:{
+        pageNum:0,
+        pageSize:10,
+        labelType:1,
+        count:1,
+        disLoad:true,
+      },
+      params3:{
+        pageNum:0,
+        pageSize:10,
+        labelType:2,
+        count:1,
+        disLoad:true,
+      },
+
+      }
   },
   methods: {
-    load(list,labelType){
-      const params = {
-        pageNum:1,
-        labelType:labelType,
-        pageSize:10
-      };
-
-      getList(params).then(res=>{
-        list.push(...res.data.list);
-        if (labelType === 0) {
-          this.count1 = res.data.totalCount;
+    updateHandle(item,form,formOption){
+      console.log(item)
+      formOption.visible = true;
+      formOption.gtpLoading = false;
+      form.content = item.content;
+     this.$set(form,"imagesIds",item.imagesIds);
+      form.groupId = item.groupId;
+      form.textId = item.textId;
+      // form = item;
+    },
+    load1(){
+      //分页处理
+      if(this.list1.length >= this.params1.count){
+        this.$message({
+          message: "没有更多了",
+          type: "warning",
+        });
+        return;
+      }
+      this.params1.pageNum++;
+      getList(this.params1).then(res=>{
+        this.list1.push(...res.data.list);
+        this.params1.count = res.data.count;
+      })
+    },
+    load2(){
+      //分页处理
+      if(this.list2.length >= this.params2.count){
+        this.$message({
+          message: "没有更多了",
+          type: "warning",
+        });
+        return;
+      }
+      this.params2.pageNum++;
+      getList(this.params2).then(res=>{
+        this.list2.push(...res.data.list);
+        this.params2.count = res.data.count;
+      })
+    },
+    bmy(value){
+      if (value === "我不满意"){
+        console.log("我不满意")
+        this.resetContent(this.form1,this.form1Option);
+        return true;
+      }
+    },
+    load3(){
+      //分页处理
+      if(this.list3.length >= this.params3.count){
+        this.$message({
+          message: "没有更多了",
+          type: "warning",
+        });
+        return;
+      }
+      this.params3.pageNum++;
+      getList(this.params3).then(res=>{
+        this.list3.push(...res.data.list);
+        this.params3.count = res.data.count;
+      })
+    },
+    submit(form){
+      save(form).then(res=>{
+        this.$message({
+          message: "保存成功",
+          type: "success",
+        });
+      }).finally(()=>{
+        if (form.labelType === 0) {
+          this.list1 = [];
+          this.params1.pageNum = 0;
+          this.form1Option.visible = false;
+          this.load1();
         }
-        if (labelType === 1) {
-          this.count2 = res.data.totalCount;
+        if (form.labelType === 1) {
+          this.list2 = [];
+          this.params2.pageNum = 0;
+          this.form2Option.visible = false;
+          this.load2();
         }
-        if (labelType === 3) {
-          this.count3 = res.data.totalCount;
+        if (form.labelType === 2) {
+          this.list3 = [];
+          this.form3Option.visible = false;
+          this.params3.pageNum = 0;
+          this.load3();
         }
       })
     },
     openWindow(form, formOption) {
+      form.groupId = "";
+      form.content = "";
+      form.textId = "";
       form.imagesIds = [];
       formOption.gtpLoading = true;
       formOption.visible = !formOption.visible;
@@ -511,6 +628,7 @@ export default {
           .then((response) => {
             let gptMsg = response.data.data.text.choices[0].message.content;
             form.displayedContent = gptMsg;
+            formOption.gtpLoading = false;
           })
     }
   },
@@ -521,9 +639,9 @@ export default {
     this.loading = false;
   },
   created() {
-    this.load(this.list1,0)
-    this.load(this.list2,1)
-    this.load(this.list3,2)
+    // this.load(this.list1,0,this.params1)
+    // this.load(this.list2,1,this.params2)
+    // this.load(this.list3,2,this.params3)
   },
   mounted() {
     this.$nextTick(() => {
@@ -588,14 +706,8 @@ export default {
         this.form3.isTyping = true;
         this.typeEffect(newVal, 'form3');
       }
-    },
-    "$refs.list1.scrollTop"(){
-      //触底刷新
-      if(this.$refs.list1.scrollTop + this.$refs.list1.clientHeight >= this.$refs.list1.scrollHeight){
-        this.load(this.list1,0)
-      }
-
     }
+
   },
 
 
@@ -696,7 +808,7 @@ export default {
 
 .option-list .material-item-info {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   margin-top: 18px;
   font-size: 14px;
@@ -704,6 +816,17 @@ export default {
   color: #888888;
 }
 
+.option-list .material-item-info .count-send-num > span {
+
+  padding: 0 10px;
+  color: #FFFFFF;
+  height: 30px;
+  border: none;
+  background-color: red;
+  margin-right: 5px;
+  text-align: center;
+  border-radius: 30px;
+}
 .option-list .material-item-info .group-icon {
   margin-left: 5px;
 }

@@ -77,6 +77,12 @@ import {MessageBox} from "element-ui";
 
 export default {
   name: "ChatCommon",
+  props:{
+    callback:{
+      type:Function,
+      default:()=>{}
+    }
+  },
   data() {
     return {
       msgList:[],
@@ -111,10 +117,17 @@ export default {
         },
     keydown(e){
       if(e.target.value){
+        let list = [];
+        if (this.callback) {
+         var res = this.callback(e.target.value);
+         if(res){
+           this.sendUserMsg(e.target.value)
+           e.target.value = ""
+           return;
+         }
+        }
         this.sendUserMsg(e.target.value)
         e.target.value = ""
-
-        let list = [];
 
         list.push(this.gpt_system);
         for(let i = 0;i<this.msgList.length;i++){
@@ -144,8 +157,11 @@ export default {
         console.log(content)
           this.msgList.push({role:"system",content:content})
         },
-        sendUserMsg(content){
+        sendUserMsg(content,callBack){
           this.msgList.push({role:"user",content:content})
+        if (callBack) {
+          callBack()
+          }
         },
         sendButMsg(butList){
           /**

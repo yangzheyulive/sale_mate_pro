@@ -47,3 +47,10 @@ return http({
     })
 
 }
+export function save (data){
+    return http({
+        url:'/material/save',
+        method:'POST',
+        data:data
+    })
+}
