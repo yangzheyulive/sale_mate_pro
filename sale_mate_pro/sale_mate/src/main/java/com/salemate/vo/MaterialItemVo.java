@@ -11,6 +11,9 @@ public class MaterialItemVo {
         private List<String> imagesIds;
         private Integer  labelType;
         private Integer sendType;
+        private Integer fgrs;
+        private Integer cjl;
+        private Integer hxl;
 
 
 }

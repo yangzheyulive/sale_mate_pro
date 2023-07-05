@@ -38,6 +38,7 @@ public class SaTokenConfigure {
                 .addExclude("/user/env")
                 .addExclude("/user/install")
                 .addExclude("/wx/call/**")
+                .addExclude("/material/getImage")
                 // 认证函数: 每次请求执行
                 .setAuth(obj -> {
                     System.out.println("---------- 进入Sa-Token全局认证 -----------");

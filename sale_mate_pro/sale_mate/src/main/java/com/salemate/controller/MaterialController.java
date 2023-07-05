@@ -7,6 +7,7 @@ import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.img.ImgUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.IdUtil;
+import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
@@ -222,6 +223,11 @@ public class MaterialController  {
                 .orderByDesc("create_date"));
         List<MaterialItemVo> voList = new ArrayList<>();
         for (MaterialHistory materialHistory : page.getRecords()) {
+            //50-100随机数
+            int cjl = RandomUtil.randomInt(5, 30);
+            int hxl = RandomUtil.randomInt(50, 100);
+            int fg = RandomUtil.randomInt(200, 300);
+
             MaterialText materialByGroupText = materialHistoryService.getMaterialByGroupText(materialHistory.getGroupId());
             List<MaterialImage> materialByGroupImage = materialHistoryService.getMaterialByGroupImage(materialHistory.getGroupId());
             List<String> idList = CollUtil.getFieldValues(materialByGroupImage, "id",String.class);
@@ -232,6 +238,9 @@ public class MaterialController  {
             materialItemVo.setTextId(materialByGroupText.getId());
             materialItemVo.setImagesIds(idList);
             materialItemVo.setGroupId(materialHistory.getGroupId());
+            materialItemVo.setCjl(cjl);
+            materialItemVo.setHxl(hxl);
+            materialItemVo.setFgrs(fg);
             voList.add(materialItemVo);
         }
         return ResponseEntity.ok(new PageUtils(voList,page.getTotal()));

@@ -21,6 +21,7 @@ import com.salemate.vo.MaterialHistoryCountVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -101,6 +102,7 @@ public class MaterialHistoryServiceImpl extends ServiceImpl<MaterialHistoryMappe
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void saveMaterial(MaterialSaveBo bo) {
         String corpId = StpUtil.getTokenSession().getString("corpId");
         Object userId = StpUtil.getLoginId();
@@ -150,7 +152,7 @@ public class MaterialHistoryServiceImpl extends ServiceImpl<MaterialHistoryMappe
                 throw new RuntimeException("标签类型不能为空");
             }
             if (StrUtil.isBlank(bo.getTextId() )) {
-                throw new RuntimeException("标签类型不能为空");
+                throw new RuntimeException("文案Id不能为空");
             }
             if (StrUtil.isBlank(bo.getContent())){
                 throw new RuntimeException("内容不能为空");
@@ -169,6 +171,7 @@ public class MaterialHistoryServiceImpl extends ServiceImpl<MaterialHistoryMappe
             remove(new QueryWrapper<MaterialHistory>().eq("type",WxConstantKeys.MaterialType.IMAGE.getValue())
                     .eq("group_id",bo.getGroupId()));
             for (String imagesId : bo.getImagesIds()) {
+
                 MaterialHistory materialHistory = new MaterialHistory();
                 materialHistory.setImageId(imagesId);
                 materialHistory.setGroupId(bo.getGroupId());
@@ -177,6 +180,7 @@ public class MaterialHistoryServiceImpl extends ServiceImpl<MaterialHistoryMappe
                 materialHistory.setSendType(bo.getSendType());
                 materialHistory.setCorpId(corpId);
                 materialHistory.setUserId(userId.toString());
+
                 save(materialHistory);
             }
         }
