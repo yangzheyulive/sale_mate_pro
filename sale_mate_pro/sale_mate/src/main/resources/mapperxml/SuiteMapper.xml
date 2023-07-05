@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.salemate.mapper.SuiteMapper">
+  <resultMap id="BaseResultMap" type="com.salemate.model.Suite">
+    <!--@mbg.generated-->
+    <!--@Table suite-->
+    <id column="suite_id" jdbcType="VARCHAR" property="suiteId" />
+    <result column="suite_secret" jdbcType="VARCHAR" property="suiteSecret" />
+    <result column="suite_ticket" jdbcType="VARCHAR" property="suiteTicket" />
+    <result column="login_suite_id" jdbcType="VARCHAR" property="loginSuiteId" />
+    <result column="login_suite_ticket" jdbcType="VARCHAR" property="loginSuiteTicket" />
+    <result column="login_suite_secret" jdbcType="VARCHAR" property="loginSuiteSecret" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    suite_id, suite_secret, suite_ticket, login_suite_id, login_suite_ticket, login_suite_secret, 
+    create_date, update_date
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update suite
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="suite_secret = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when suite_id = #{item.suiteId,jdbcType=VARCHAR} then #{item.suiteSecret,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="suite_ticket = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when suite_id = #{item.suiteId,jdbcType=VARCHAR} then #{item.suiteTicket,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="login_suite_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when suite_id = #{item.suiteId,jdbcType=VARCHAR} then #{item.loginSuiteId,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="login_suite_ticket = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when suite_id = #{item.suiteId,jdbcType=VARCHAR} then #{item.loginSuiteTicket,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="login_suite_secret = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when suite_id = #{item.suiteId,jdbcType=VARCHAR} then #{item.loginSuiteSecret,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="create_date = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when suite_id = #{item.suiteId,jdbcType=VARCHAR} then #{item.createDate,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="update_date = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when suite_id = #{item.suiteId,jdbcType=VARCHAR} then #{item.updateDate,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where suite_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.suiteId,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into suite
+    (suite_id, suite_secret, suite_ticket, login_suite_id, login_suite_ticket, login_suite_secret, 
+      create_date, update_date)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.suiteId,jdbcType=VARCHAR}, #{item.suiteSecret,jdbcType=VARCHAR}, #{item.suiteTicket,jdbcType=VARCHAR}, 
+        #{item.loginSuiteId,jdbcType=VARCHAR}, #{item.loginSuiteTicket,jdbcType=VARCHAR}, 
+        #{item.loginSuiteSecret,jdbcType=VARCHAR}, #{item.createDate,jdbcType=TIMESTAMP}, 
+        #{item.updateDate,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+</mapper>

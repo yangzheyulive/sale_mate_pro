@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.salemate.mapper.EnterpriseMapper">
+  <resultMap id="BaseResultMap" type="com.salemate.model.Enterprise">
+    <!--@mbg.generated-->
+    <!--@Table enterprise-->
+    <id column="corp_id" jdbcType="VARCHAR" property="corpId" />
+    <result column="suite_id" jdbcType="VARCHAR" property="suiteId" />
+    <result column="permanent_code" jdbcType="VARCHAR" property="permanentCode" />
+    <result column="corp_name" jdbcType="VARCHAR" property="corpName" />
+    <result column="corp_user_max" jdbcType="INTEGER" property="corpUserMax" />
+    <result column="corp_type" jdbcType="VARCHAR" property="corpType" />
+    <result column="corp_round_logo_url" jdbcType="VARCHAR" property="corpRoundLogoUrl" />
+    <result column="corp_square_logo_url" jdbcType="VARCHAR" property="corpSquareLogoUrl" />
+    <result column="subject_type" jdbcType="TINYINT" property="subjectType" />
+    <result column="corp_wxqrcode" jdbcType="VARCHAR" property="corpWxqrcode" />
+    <result column="corp_scale" jdbcType="VARCHAR" property="corpScale" />
+    <result column="corp_industry" jdbcType="VARCHAR" property="corpIndustry" />
+    <result column="corp_sub_industry" jdbcType="VARCHAR" property="corpSubIndustry" />
+    <result column="user_secret" jdbcType="VARCHAR" property="userSecret" />
+    <result column="customer_secret" jdbcType="VARCHAR" property="customerSecret" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    corp_id, suite_id, permanent_code, corp_name, corp_user_max, corp_type, corp_round_logo_url, 
+    corp_square_logo_url, subject_type, corp_wxqrcode, corp_scale, corp_industry, corp_sub_industry, 
+    user_secret, customer_secret, create_date, update_date
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update enterprise
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="suite_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when corp_id = #{item.corpId,jdbcType=VARCHAR} then #{item.suiteId,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="permanent_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when corp_id = #{item.corpId,jdbcType=VARCHAR} then #{item.permanentCode,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="corp_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when corp_id = #{item.corpId,jdbcType=VARCHAR} then #{item.corpName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="corp_user_max = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when corp_id = #{item.corpId,jdbcType=VARCHAR} then #{item.corpUserMax,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="corp_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when corp_id = #{item.corpId,jdbcType=VARCHAR} then #{item.corpType,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="corp_round_logo_url = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when corp_id = #{item.corpId,jdbcType=VARCHAR} then #{item.corpRoundLogoUrl,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="corp_square_logo_url = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when corp_id = #{item.corpId,jdbcType=VARCHAR} then #{item.corpSquareLogoUrl,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="subject_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when corp_id = #{item.corpId,jdbcType=VARCHAR} then #{item.subjectType,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="corp_wxqrcode = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when corp_id = #{item.corpId,jdbcType=VARCHAR} then #{item.corpWxqrcode,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="corp_scale = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when corp_id = #{item.corpId,jdbcType=VARCHAR} then #{item.corpScale,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="corp_industry = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when corp_id = #{item.corpId,jdbcType=VARCHAR} then #{item.corpIndustry,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="corp_sub_industry = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when corp_id = #{item.corpId,jdbcType=VARCHAR} then #{item.corpSubIndustry,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="user_secret = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when corp_id = #{item.corpId,jdbcType=VARCHAR} then #{item.userSecret,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="customer_secret = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when corp_id = #{item.corpId,jdbcType=VARCHAR} then #{item.customerSecret,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="create_date = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when corp_id = #{item.corpId,jdbcType=VARCHAR} then #{item.createDate,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="update_date = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when corp_id = #{item.corpId,jdbcType=VARCHAR} then #{item.updateDate,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where corp_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.corpId,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into enterprise
+    (corp_id, suite_id, permanent_code, corp_name, corp_user_max, corp_type, corp_round_logo_url, 
+      corp_square_logo_url, subject_type, corp_wxqrcode, corp_scale, corp_industry, corp_sub_industry, 
+      user_secret, customer_secret, create_date, update_date)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.corpId,jdbcType=VARCHAR}, #{item.suiteId,jdbcType=VARCHAR}, #{item.permanentCode,jdbcType=VARCHAR}, 
+        #{item.corpName,jdbcType=VARCHAR}, #{item.corpUserMax,jdbcType=INTEGER}, #{item.corpType,jdbcType=VARCHAR}, 
+        #{item.corpRoundLogoUrl,jdbcType=VARCHAR}, #{item.corpSquareLogoUrl,jdbcType=VARCHAR}, 
+        #{item.subjectType,jdbcType=TINYINT}, #{item.corpWxqrcode,jdbcType=VARCHAR}, #{item.corpScale,jdbcType=VARCHAR}, 
+        #{item.corpIndustry,jdbcType=VARCHAR}, #{item.corpSubIndustry,jdbcType=VARCHAR}, 
+        #{item.userSecret,jdbcType=VARCHAR}, #{item.customerSecret,jdbcType=VARCHAR}, #{item.createDate,jdbcType=TIMESTAMP}, 
+        #{item.updateDate,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+</mapper>

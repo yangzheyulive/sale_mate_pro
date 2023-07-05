@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.salemate.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.salemate.model.User">
+    <!--@mbg.generated-->
+    <!--@Table `user`-->
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="enterprise_id" jdbcType="BIGINT" property="enterpriseId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="gender" jdbcType="TINYINT" property="gender" />
+    <result column="last_login_code" jdbcType="VARCHAR" property="lastLoginCode" />
+    <result column="update_state" jdbcType="TINYINT" property="updateState" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    user_id, enterprise_id, user_name, avatar, gender, last_login_code, update_state, 
+    create_date, update_date
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update `user`
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="enterprise_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when user_id = #{item.userId,jdbcType=VARCHAR} then #{item.enterpriseId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="user_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when user_id = #{item.userId,jdbcType=VARCHAR} then #{item.userName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="avatar = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when user_id = #{item.userId,jdbcType=VARCHAR} then #{item.avatar,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="gender = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when user_id = #{item.userId,jdbcType=VARCHAR} then #{item.gender,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="last_login_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when user_id = #{item.userId,jdbcType=VARCHAR} then #{item.lastLoginCode,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="update_state = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when user_id = #{item.userId,jdbcType=VARCHAR} then #{item.updateState,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="create_date = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when user_id = #{item.userId,jdbcType=VARCHAR} then #{item.createDate,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="update_date = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when user_id = #{item.userId,jdbcType=VARCHAR} then #{item.updateDate,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where user_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.userId,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into `user`
+    (user_id, enterprise_id, user_name, avatar, gender, last_login_code, update_state, 
+      create_date, update_date)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.userId,jdbcType=VARCHAR}, #{item.enterpriseId,jdbcType=BIGINT}, #{item.userName,jdbcType=VARCHAR}, 
+        #{item.avatar,jdbcType=VARCHAR}, #{item.gender,jdbcType=TINYINT}, #{item.lastLoginCode,jdbcType=VARCHAR}, 
+        #{item.updateState,jdbcType=TINYINT}, #{item.createDate,jdbcType=TIMESTAMP}, #{item.updateDate,jdbcType=TIMESTAMP}
+        )
+    </foreach>
+  </insert>
+</mapper>

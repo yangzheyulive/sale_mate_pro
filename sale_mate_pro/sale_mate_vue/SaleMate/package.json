@@ -1,0 +1,25 @@
+{
+  "name": "default",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "set NODE_OPTIONS=\"--openssl-legacy-provider\" & vue-cli-service serve",
+    "build": "set NODE_OPTIONS=\"--openssl-legacy-provider\" & vue-cli-service build"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "core-js": "^2.6.5",
+    "element-ui": "^2.15.13",
+    "vue": "^2.6.10",
+    "vue-axios": "^3.5.2",
+    "vue-cookie": "1.1.4",
+    "vue-infinite-date-picker": "^0.2.4",
+    "vue-router": "^3.5.2",
+    "vue-tour": "^2.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.8.0",
+    "@vue/cli-service": "^3.8.0",
+    "vue-template-compiler": "^2.6.10"
+  }
+}

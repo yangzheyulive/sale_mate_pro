@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.salemate.mapper.CustomerMapper">
+  <resultMap id="BaseResultMap" type="com.salemate.model.Customer">
+    <!--@mbg.generated-->
+    <!--@Table customer-->
+    <id column="external_userid" jdbcType="VARCHAR" property="externalUserid" />
+    <result column="corp_id" jdbcType="VARCHAR" property="corpId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="gender" jdbcType="TINYINT" property="gender" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="tag_name" jdbcType="VARCHAR" property="tagName" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="add_way" jdbcType="TINYINT" property="addWay" />
+    <result column="oper_userid" jdbcType="VARCHAR" property="operUserid" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="oper_time" jdbcType="TIMESTAMP" property="operTime" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    external_userid, corp_id, `name`, gender, `type`, tag_name, remark, description, 
+    add_way, oper_userid, user_name, oper_time, create_date, update_date
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update customer
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="corp_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when external_userid = #{item.externalUserid,jdbcType=VARCHAR} then #{item.corpId,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when external_userid = #{item.externalUserid,jdbcType=VARCHAR} then #{item.name,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="gender = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when external_userid = #{item.externalUserid,jdbcType=VARCHAR} then #{item.gender,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="`type` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when external_userid = #{item.externalUserid,jdbcType=VARCHAR} then #{item.type,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="tag_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when external_userid = #{item.externalUserid,jdbcType=VARCHAR} then #{item.tagName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="remark = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when external_userid = #{item.externalUserid,jdbcType=VARCHAR} then #{item.remark,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="description = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when external_userid = #{item.externalUserid,jdbcType=VARCHAR} then #{item.description,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="add_way = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when external_userid = #{item.externalUserid,jdbcType=VARCHAR} then #{item.addWay,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="oper_userid = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when external_userid = #{item.externalUserid,jdbcType=VARCHAR} then #{item.operUserid,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="user_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when external_userid = #{item.externalUserid,jdbcType=VARCHAR} then #{item.userName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="oper_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when external_userid = #{item.externalUserid,jdbcType=VARCHAR} then #{item.operTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="create_date = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when external_userid = #{item.externalUserid,jdbcType=VARCHAR} then #{item.createDate,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="update_date = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when external_userid = #{item.externalUserid,jdbcType=VARCHAR} then #{item.updateDate,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where external_userid in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.externalUserid,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+    <select id="queryPage" resultType="com.salemate.model.Customer">
+      select
+        cu.external_userid,
+        cu.corp_id,
+        cu.NAME,
+        cu.gender,
+        cu.type,
+        cu.tag_name,
+        cu.remark,
+        cu.description,
+        cu.add_way,
+        cu.oper_userid,
+        cu.user_name,
+        cu.oper_time,
+        cu.create_date,
+        cu.update_date,
+        cu.avatar,
+        cu.user_id,
+        cu.label_type
+      FROM
+        customer cu
+      <where>
+        1=1
+        <if test="bo.externalUserid != null and bo.externalUserid != ''">
+          and cu.external_userid = #{bo.externalUserid,jdbcType=VARCHAR}
+        </if>
+        <if test="bo.corpId != null and bo.corpId != ''">
+          and cu.corp_id = #{bo.corpId,jdbcType=VARCHAR}
+        </if>
+        <if test="bo.name != null and bo.name != ''">
+          and cu.name like CONCAT('%',#{bo.name,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="bo.description != null and bo.description != ''">
+            and CONCAT('%',#{bo.description,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="bo.labelType != null">
+          and cu.label_type = #{bo.labelType,jdbcType=VARCHAR}
+        </if>
+        <if test="bo.tags != null and bo.tags.size() > 0">
+          and cu.external_userid in (
+           Select
+            customer_id
+              From
+            customer_tag
+            Where
+            <foreach collection="bo.tags" open="tag_id in (" close=")" separator="," item="item" >
+              #{item,jdbcType=VARCHAR}
+            </foreach>
+          )
+        </if>
+        ORDER BY cu.create_date DESC
+
+      </where>
+    </select>
+    <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into customer
+    (external_userid, corp_id, `name`, gender, `type`, tag_name, remark, description, 
+      add_way, oper_userid, user_name, oper_time, create_date, update_date)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.externalUserid,jdbcType=VARCHAR}, #{item.corpId,jdbcType=VARCHAR}, #{item.name,jdbcType=VARCHAR}, 
+        #{item.gender,jdbcType=TINYINT}, #{item.type,jdbcType=TINYINT}, #{item.tagName,jdbcType=VARCHAR}, 
+        #{item.remark,jdbcType=VARCHAR}, #{item.description,jdbcType=VARCHAR}, #{item.addWay,jdbcType=TINYINT}, 
+        #{item.operUserid,jdbcType=VARCHAR}, #{item.userName,jdbcType=VARCHAR}, #{item.operTime,jdbcType=TIMESTAMP}, 
+        #{item.createDate,jdbcType=TIMESTAMP}, #{item.updateDate,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+</mapper>
