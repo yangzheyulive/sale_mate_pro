@@ -16,11 +16,6 @@
 http://salemate.pinbar.vip/
 
 ## [视频演示](http://111.231.18.109:3000/source/video/1723169027857vniwnrusd.mp4)
-<p align="center">
-  <a href="http://111.231.18.109:3000/source/video/1723169027857vniwnrusd.mp4">
-   <img alt="spring-boot-plus videos" src="http://xxww.pinbar.vip:9091/20230705.png">
-  </a>
-</p>
 
 ## PPT说明
 ![1](https://github.com/yangzheyulive/sale_mate_pro/assets/33648301/dd8c5a5c-0f51-4dd9-b5d7-88cb0308d162)
